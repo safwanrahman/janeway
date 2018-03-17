@@ -51,9 +51,10 @@ def user_login(request):
     else:
         bad_logins = logic.check_for_bad_login_attempts(request)
 
-    if bad_logins >= 5:
-        messages.add_message(request, messages.ERROR, 'You have been banned from logging in due to failed attempts.')
-        return redirect(reverse('website_index'))
+    # Remove bad login
+    # if bad_logins >= 5:
+    #     messages.add_message(request, messages.ERROR, 'You have been banned from logging in due to failed attempts.')
+    #     return redirect(reverse('website_index'))
 
     form = forms.LoginForm(bad_logins=bad_logins)
 
